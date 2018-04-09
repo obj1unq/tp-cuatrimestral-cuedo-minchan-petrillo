@@ -1,0 +1,26 @@
+
+import capos.*
+
+describe "artefactos avanzados" {
+	
+	fixture {
+		rolando.agregarArtefacto(libroDeHechizos)
+		rolando.agregarArtefacto(collarDivino)
+		rolando.agregarArtefacto(espadaDelDestino)
+		rolando.agregarArtefacto(armadura)
+		armadura.agregarRefuerzo(hechizo, rolando)
+		
+		}
+
+	
+	test "sumatoria de puntos de hechiceria" {
+		assert.equals(3, rolando.valorHechiceria())
+	}
+	
+	test "sumatoria de puntos de lucha" {
+		
+		assert.equals(9, rolando.valorLucha())
+		}
+	}
+	
+	

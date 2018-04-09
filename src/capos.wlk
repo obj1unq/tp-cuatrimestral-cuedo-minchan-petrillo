@@ -7,9 +7,9 @@ object rolando {
 	var artefactos = #{}
 	
 	
-	method valorLucha() = valorBaseLucha + artefactos.sum({artefacto=> artefacto.valorLucha()})
+	method valorLucha() = valorBaseLucha + artefactos.sum({artefacto=> artefacto.valorExtraLucha()})
 	
-	method valorHechiceria() = valorBaseHechiceria + artefactos.sum({artefacto=> artefacto.valorHechiceria(self)})
+	method valorHechiceria() = valorBaseHechiceria + artefactos.sum({artefacto=> artefacto.valorExtraHechiceria(self)})
 	
 	
 	method agregarArtefacto(unArtefacto){
@@ -28,12 +28,60 @@ object libroDeHechizos {
 	
 	method valorExtraLucha() = 0
 	
-	method valorHechiceria(capo) = capo.valorBaseHechiceria()
+	method valorExtraHechiceria(capo) = capo.valorBaseHechiceria()
 }
 
 object collarDivino {
 	
-	method valorLucha() = 1
+	method valorExtraLucha() = 1
 	
-	method valorHechiceria(capo) = 1
+	method valorExtraHechiceria(capo) = 1
+}
+
+
+//////////////////// ARTEFACTOS AVANZADOS ///////////////////
+
+object armadura{
+	
+	var property valorTotalLucha = 2
+	var property valorTotalHechiceria = 0
+	
+	method valorExtraLucha()= valorTotalLucha
+	
+	method valorExtraHechiceria(capo) = valorTotalHechiceria
+	
+	method agregarRefuerzo(refuerzo, capo){
+		self.resetearValores()
+		refuerzo.sumarRefuerzo(capo)
+	}
+	
+	method calcularHechizo(capo){
+		if (capo.valorBaseHechiceria() > 3){valorTotalHechiceria += 2}
+			else valorTotalHechiceria += 0
+	}
+	
+	method resetearValores(){
+		valorTotalLucha = 2
+		valorTotalHechiceria = 0
+	}
+}
+
+object cotaDeMalla{
+	
+	method sumarRefuerzo(capo){
+		armadura.valorTotalLucha(3) 
+	}
+}
+
+object bendicion{
+	
+	method sumarRefuerzo(capo){
+		armadura.valorTotalHechiceria(1) 
+	}
+}
+object hechizo{
+	
+	method sumarRefuerzo(capo){
+		armadura.calcularHechizo(capo) 
+	}
 }
