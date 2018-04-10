@@ -1,0 +1,63 @@
+import TP1.*
+
+describe "artefactos" {
+
+	test "funcionamiento de los requerimientos basicos con artefacto" {
+
+		rolando.incrementaLucha()
+		rolando.incrementaHechiceria()
+		rolando.agregarArtefacto(espadaDelDestino)
+		assert.equals(7, rolando.valorLucha())
+		assert.equals(2, rolando.valorHechiceria())
+	}
+
+	test "rolando obtiene muchos artefactos"{
+		
+		rolando.agregarArtefacto(espadaDelDestino)
+		rolando.agregarArtefacto(collarDivino)
+		rolando.agregarArtefacto(libroDeHechizos)
+		assert.equals(7, rolando.valorLucha())
+		assert.equals(3, rolando.valorHechiceria())
+	}
+	
+	test "agregando armadura con refuerzo"{
+		
+		rolando.agregarArtefacto(espadaDelDestino)
+		rolando.agregarArtefacto(collarDivino)
+		rolando.agregarArtefacto(armadura)
+		armadura.setRefuerzo(cotaDeMalla)
+		assert.equals(10, rolando.valorLucha())
+		assert.equals(2, rolando.valorHechiceria())
+	}
+	
+	test "rolando solo tiene un espejo fantastico en sus artefactos"{
+		
+		rolando.agregarArtefacto(espejoFantastico)
+		
+		assert.equals(3, rolando.valorLucha())
+		assert.equals(1, rolando.valorHechiceria())
+	}
+	
+	 test "rolando solo tiene un espejo, valor de lucha y hechiceria"{
+		
+		rolando.agregarArtefacto(espejoFantastico)
+		
+		assert.equals(0, espejoFantastico.valorLucha(rolando))
+		assert.equals(0, espejoFantastico.valorHechiceria(rolando))
+	}
+	
+	
+	test "mejor artefacto que posee rolando"{
+		
+		rolando.agregarArtefacto(espejoFantastico)
+		rolando.agregarArtefacto(espadaDelDestino)
+		rolando.agregarArtefacto(collarDivino)
+		rolando.agregarArtefacto(armadura)
+		armadura.setRefuerzo(cotaDeMalla)
+		assert.equals(espadaDelDestino, espejoFantastico.mejorArtefacto(rolando))
+		
+	}
+	
+
+}
+

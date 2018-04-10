@@ -11,9 +11,9 @@ object rolando {
 	
 	method valorHechiceriaBase() = valorBaseHechiceria
 	
-	method incrementaLucha() = valorBaseLucha + 1
+	method incrementaLucha() { valorBaseLucha += 1}
 	
-	method incrementaHechiceria() = valorBaseHechiceria + 1
+	method incrementaHechiceria() { valorBaseHechiceria += 1}
 	
 	method valorLucha() = valorBaseLucha + artefactos.sum{artefacto=> artefacto.valorLucha(self)}
 	
@@ -98,28 +98,41 @@ object ninguna {
 }
 
 
-object espejoFantastico{
+object espejoFantastico	{
 	
 	method mejorArtefacto(capo) = 
 
-     if( capo.getArtefactos().size()>=1)
+	 return if( capo.getArtefactos().size()>=1)
      
-       capo.getArtefactos().filter({artefacto=>artefacto!=self}).max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
+       (self.artefactosSinEspejo(capo)).max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
         
-       else self
+       		else self
        	
+	method artefactosSinEspejo(capo) {
+       	
+       	return capo.getArtefactos().filter({artefacto=>artefacto!=self})
+       	
+       	}
 
-	method valorHechiceria(capo) =
+	method valorHechiceria(capo) {
 	
-	   if(capo.getArtefactos().size() == 1 and capo.getArtefactos().contains(self)) 0 
+	   return if(self.contieneSoloEspejo(capo)) 0 
 	   
-	   else self.mejorArtefacto(capo).valorHechiceria(capo)
+	  	 else self.mejorArtefacto(capo).valorHechiceria(capo)
+	  	 
+	  	 }
 	   
-	method valorLucha(capo) =
+	method valorLucha(capo) {
 	
-	  if(capo.getArtefactos().size() == 1 and capo.getArtefactos().contains(self)) 0 
+	   return if(self.contieneSoloEspejo(capo)) 0 
 	  
-	   else self.mejorArtefacto(capo).valorLucha(capo)
+	  	 else self.mejorArtefacto(capo).valorLucha(capo)
+	  	 
+	  	 }
+	  	 
+	method contieneSoloEspejo(capo){
+		return capo.getArtefactos().size() == 1 and capo.getArtefactos().contains(self)
+	}  	 
 	   
 }
 
