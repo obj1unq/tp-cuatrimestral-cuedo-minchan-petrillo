@@ -1,7 +1,5 @@
 import TP1.*
 
-describe "artefactos" {
-
 	test "funcionamiento de los requerimientos basicos con artefacto" {
 
 		rolando.incrementaLucha()
@@ -81,4 +79,3 @@ describe "artefactos" {
 		assert.equals(4, rolando.valorLuchaBase())
 		assert.equals(2, rolando.valorHechiceriaBase())
 	}
-}

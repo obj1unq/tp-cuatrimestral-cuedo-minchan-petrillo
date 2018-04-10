@@ -11,9 +11,9 @@ object rolando {
 	
 	method valorHechiceriaBase() = valorBaseHechiceria
 	
-	method incrementaLucha() { valorBaseLucha += 1}
+	method incrementaLucha() { valorBaseLucha += 1 }
 	
-	method incrementaHechiceria() { valorBaseHechiceria += 1}
+	method incrementaHechiceria() { valorBaseHechiceria += 1 }
 	
 	method valorLucha() = valorBaseLucha + artefactos.sum{artefacto=> artefacto.valorLucha(self)}
 	
@@ -136,7 +136,7 @@ object espejoFantastico	{
 	   
 }
 
-object bandoDelSur{
+object bandoDelSur {
 	
 	var tesoro = 0
 	var reserva = 0
