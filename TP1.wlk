@@ -185,6 +185,3 @@ object sabio {
 	method valorHechiceria(capo) = capo.incrementaHechiceria()
 		
 }
-
-
-
