@@ -55,9 +55,35 @@ describe "artefactos" {
 		rolando.agregarArtefacto(armadura)
 		armadura.setRefuerzo(cotaDeMalla)
 		assert.equals(espadaDelDestino, espejoFantastico.mejorArtefacto(rolando))
+		}
 		
+
+	test "rolando se encuentra un cofrecito y su oro aumenta a 100" {
+	rolando.encontrarElemento(cofrecito)
+		assert.equals(100, bandoDelSur.getTesoro())
+		assert.equals(0, bandoDelSur.getReserva())
+		assert.equals(3, rolando.valorLuchaBase())
+		assert.equals(1, rolando.valorHechiceriaBase())
+	}
+	
+	test "rolando se encuentra un cofrecito y su reserva aumenta a 50" {
+	rolando.encontrarElemento(carbon)
+		assert.equals(0, bandoDelSur.getTesoro())
+		assert.equals(50, bandoDelSur.getReserva())
+		assert.equals(3, rolando.valorLuchaBase())
+		assert.equals(1, rolando.valorHechiceriaBase()
+		)
+	}
+	
+	test "rolando se encuentra un viejo sabio y su valor base de lucha y hechiceria incrementa 1" {
+	rolando.encontrarElemento(sabio)
+		assert.equals(0, bandoDelSur.getTesoro())
+		assert.equals(0, bandoDelSur.getReserva())
+		assert.equals(4, rolando.valorLuchaBase())
+		assert.equals(2, rolando.valorHechiceriaBase())
 	}
 	
 
 }
+
 

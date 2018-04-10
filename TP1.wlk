@@ -181,9 +181,10 @@ object sabio {
 	method carbon(capo){
 		capo.getBando().agregaReserva(0)
 	}
-	method valorLucha(capo) = 1
-	method valorHechiceria(capo) = 1
+	method valorLucha(capo) = capo.incrementaLucha()
+	method valorHechiceria(capo) = capo.incrementaHechiceria()
 		
 }
+
 
 
