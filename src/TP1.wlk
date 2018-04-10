@@ -15,9 +15,9 @@ object rolando {
 	
 	method incrementaHechiceria() { valorBaseHechiceria += 1 }
 	
-	method valorLucha() = valorBaseLucha + artefactos.sum{artefacto=> artefacto.valorLucha(self)}
+	method valorLucha() = valorBaseLucha + artefactos.sum{ artefacto=> artefacto.valorLucha(self) }
 	
-	method valorHechiceria() = valorBaseHechiceria + artefactos.sum{artefacto=> artefacto.valorHechiceria(self)}
+	method valorHechiceria() = valorBaseHechiceria + artefactos.sum{ artefacto=> artefacto.valorHechiceria(self) }
 	
 	method getBando() = bando
 	
