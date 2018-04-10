@@ -56,7 +56,6 @@ describe "artefactos" {
 		armadura.setRefuerzo(cotaDeMalla)
 		assert.equals(espadaDelDestino, espejoFantastico.mejorArtefacto(rolando))
 		}
-		
 
 	test "rolando se encuentra un cofrecito y su oro aumenta a 100" {
 	rolando.encontrarElemento(cofrecito)
@@ -82,6 +81,4 @@ describe "artefactos" {
 		assert.equals(4, rolando.valorLuchaBase())
 		assert.equals(2, rolando.valorHechiceriaBase())
 	}
-	
-
 }
