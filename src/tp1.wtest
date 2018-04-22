@@ -44,7 +44,11 @@ import TP1.*
 		assert.equals(0, espejoFantastico.valorHechiceria(rolando))
 	}
 	
-	
+	//CORRECCION: Este test falla. el mejor artecto que devuelve es la armadura con la cota de malla
+	//CORRECCION: Ambos artefactos: armadura y espada, son respuestas válidas para el mensaje
+	//CORRECCION: Una manera de arreglarlo es modificando el test para saber si lo que devuelve es
+	//CORRECCION: cualquiera de los dos: 
+	//CORRECCION: por ejempleo assert.that(#{espadaDelDestino, armadura}.contains(espejoFantastico.mejorArtefacto(rolando)))
 	test "mejor artefacto que posee rolando"{
 		
 		rolando.agregarArtefacto(espejoFantastico)
@@ -54,7 +58,11 @@ import TP1.*
 		armadura.setRefuerzo(cotaDeMalla)
 		assert.equals(espadaDelDestino, espejoFantastico.mejorArtefacto(rolando))
 		}
-
+		
+	//CORRECCION: Estaría faltando un test en el cual el espejo intervenga en el cálculo de los valores de rolando
+	//CORRECCION: o si no uno en el cual el espejo conteste los valores de lucar y hechicería que aporta, para asegurarse 
+	//CORRECCION: de que es un artefacto polimórfico con los demás y anda	
+	
 	test "rolando se encuentra un cofrecito y su oro aumenta a 100" {
 	rolando.encontrarElemento(cofrecito)
 		assert.equals(100, bandoDelSur.getTesoro())
