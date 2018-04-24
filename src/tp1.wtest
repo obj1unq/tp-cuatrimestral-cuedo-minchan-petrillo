@@ -56,7 +56,7 @@ import TP1.*
 		rolando.agregarArtefacto(collarDivino)
 		rolando.agregarArtefacto(armadura)
 		armadura.setRefuerzo(cotaDeMalla)
-		assert.equals(espadaDelDestino, espejoFantastico.mejorArtefacto(rolando))
+		assert.that(#{espadaDelDestino, armadura}.contains(espejoFantastico.mejorArtefacto(rolando)))
 		}
 		
 	//CORRECCION: Estaría faltando un test en el cual el espejo intervenga en el cálculo de los valores de rolando
