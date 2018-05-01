@@ -3,12 +3,12 @@
 //CORRECCION:  Mejorar el polimorfismo de elementos.
 //CORRECCION: Los test pueden mejorarse, en particular el testeo sobre el espejo.
  
-object rolando {
+class Capo {
 	
 	var valorBaseLucha = 3
 	var valorBaseHechiceria = 1
 	var artefactos = #{}
-	var bando = bandoDelSur
+	var property bando = null
 	
 	method getArtefactos() = artefactos
 	
@@ -31,6 +31,9 @@ object rolando {
 	method agregarArtefacto(unArtefacto){
 		artefactos.add(unArtefacto)
 	}
+		
+	method somosAmigos(capo) = capo.getBando() == self.bando()
+	
 }
 
 
@@ -123,7 +126,7 @@ object espejoFantastico{
 	}    
 }
 
-object bandoDelSur {
+class Bando {
 	
 	var tesoro = 0
 	var reserva = 0
