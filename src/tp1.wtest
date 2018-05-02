@@ -94,6 +94,7 @@ import TP1.*
 		assert.equals(4, rolando.valorLuchaBase())
 		assert.equals(2, rolando.valorHechiceriaBase())
 	}
-	
+
 }	
+
 	
