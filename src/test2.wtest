@@ -8,13 +8,21 @@ describe "testeando la segunda parte"{
 	var sur = new Bando(tesoro = 100, reserva = 50)
 	var norte = new Bando(tesoro = 200, reserva = 200)
 	
-	test "testX" {
+	test "testeando el contenido basico de archivaldo, caterina y rolando" {
 		
 		assert.equals(#{collarDivino,espejoFantastico}, archivaldo.getArtefactos())
-
+		assert.equals(#{espadaDelDestino}, caterina.getArtefactos())
+		rolando.incrementaLucha()
+		assert.equals(2,rolando.valorLucha())
 	}
 
-
+	test "archivaldo y caterina no son amigos" {
+	assert.notThat(archivaldo.somosAmigos(caterina))
+	}
+	
+	test "caterina y rolando son amigos" {
+	assert.that(rolando.somosAmigos(caterina))
+	}
 
 
 }
