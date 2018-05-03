@@ -5,10 +5,11 @@
  
 class Capo {
 	
-	var valorBaseLucha = 3
-	var valorBaseHechiceria = 1
-	var artefactos = #{}
+	var property valorBaseLucha = 3
+	var property valorBaseHechiceria = 1
+	var property artefactos = #{}
 	var property bando = null
+	var property estaMuerto = false
 	
 	method getArtefactos() = artefactos
 	
@@ -24,9 +25,36 @@ class Capo {
 	
 	method valorHechiceria() = valorBaseHechiceria + artefactos.sum{ artefacto=> artefacto.valorHechiceria(self) }
 	
+	method puntosEnTotal() = self.valorLucha() + self.valorHechiceria()
+	
 	method getBando() = bando
 	
-    method encontrarElemento(elem) { elem.encontradoPor(self)} 	
+    method encontrarElemento(elem) { elem.encontradoPor(self)}
+    
+    method encontradoPor(capo){
+    	if (self.somosAmigos(capo)){
+    		self.regalarArtefactos(capo)
+    	} 
+    	else {
+    		self.peleaCon(capo)	
+    	}
+    }
+    //en este metodo se remueven todos los elementos de la coleccion pero no se logran pasar
+    //a la coleccion del otro capo
+    method regalarArtefactos(capo){
+    	capo.artefactos().addAll(self.getArtefactos())
+    	self.artefactos().clear()
+    } 	
+    
+    method peleaCon(capo){
+    	if (self.puntosEnTotal()>=capo.puntosEnTotal()){
+    		capo.estaMuerto(true)
+    		
+    	}else{
+    		
+    		self.estaMuerto(true)
+    	}
+    }
 	
 	method agregarArtefacto(unArtefacto){
 		artefactos.add(unArtefacto)
@@ -42,6 +70,10 @@ object espadaDelDestino {
 	method valorLucha(capo) = 3
 	
 	method valorHechiceria(capo) = 0
+	
+	method encontradoPor(capo){
+		capo.artefactos().add{self}
+	}
 }
 
 object libroDeHechizos {
@@ -49,6 +81,10 @@ object libroDeHechizos {
 	method valorLucha(capo) = 0
 	
 	method valorHechiceria(capo) = capo.valorHechiceriaBase()
+	
+	method encontradoPor(capo){
+		capo.artefactos().add{self}
+	}
 }
 
 object collarDivino {
@@ -56,6 +92,10 @@ object collarDivino {
 	method valorLucha(capo) = 1
 	
 	method valorHechiceria(capo) = 1
+	
+	method encontradoPor(capo){
+		capo.artefactos().add{self}
+	}
 }
 
 object armadura {
@@ -67,6 +107,10 @@ object armadura {
 	method valorLucha(capo) = 2 + refuerzo.valorLucha(capo)
 	
 	method valorHechiceria(capo) = refuerzo.valorHechiceria(capo)
+	
+	method encontradoPor(capo){
+		capo.artefactos().add{self}
+	}
 		
 }
 
@@ -123,6 +167,10 @@ object espejoFantastico{
 	  			self.mejorArtefacto(capo).valorLucha(capo)	 
 	   		else
 	   			0
+	}
+	
+	method encontradoPor(capo){
+		capo.artefactos().add{self}
 	}    
 }
 

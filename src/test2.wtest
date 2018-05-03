@@ -23,6 +23,16 @@ describe "testeando la segunda parte"{
 	test "caterina y rolando son amigos" {
 	assert.that(rolando.somosAmigos(caterina))
 	}
-
-
+	
+	test "rolando se encuentra a archivaldo"{
+		rolando.encontrarElemento(archivaldo)
+		assert.that(rolando.estaMuerto())
+	}
+	
+	test "rolando se encuentra a caterina"{
+		rolando.encontrarElemento(caterina)
+		assert.that(caterina.getArtefactos().isEmpty())
+		//este test no me funciona...en el codigo dejo comentado la parte donde creo q esta el error
+		assert.that(rolando.getArtefactos().contains(#{espadaDelDestino}))
+	}
 }
