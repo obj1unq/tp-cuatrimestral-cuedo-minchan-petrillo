@@ -39,8 +39,7 @@ class Capo {
     		self.peleaCon(capo)	
     	}
     }
-    //en este metodo se remueven todos los elementos de la coleccion pero no se logran pasar
-    //a la coleccion del otro capo
+    
     method regalarArtefactos(capo){
     	capo.artefactos().addAll(self.getArtefactos())
     	self.artefactos().clear()

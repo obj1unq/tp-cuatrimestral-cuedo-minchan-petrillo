@@ -2,7 +2,7 @@ import TP1.*
 
 describe "testeando la segunda parte"{
 	
-	var rolando = new Capo(bando = "sur", valorBaseLucha = 1, valorBaseHechiceria = 3)
+	var rolando = new Capo(bando = "sur", valorBaseLucha = 1, valorBaseHechiceria = 3,artefactos=#{})
 	var caterina = new Capo(bando = "sur", valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos=#{espadaDelDestino})
 	var archivaldo = new Capo(bando = "norte", valorBaseLucha = 3, valorBaseHechiceria = 3,artefactos=#{collarDivino,espejoFantastico})
 	var sur = new Bando(tesoro = 100, reserva = 50)
@@ -32,7 +32,6 @@ describe "testeando la segunda parte"{
 	test "rolando se encuentra a caterina"{
 		rolando.encontrarElemento(caterina)
 		assert.that(caterina.getArtefactos().isEmpty())
-		//este test no me funciona...en el codigo dejo comentado la parte donde creo q esta el error
-		assert.that(rolando.getArtefactos().contains(#{espadaDelDestino}))
+		assert.that(rolando.getArtefactos().contains(espadaDelDestino))
 	}
 }
