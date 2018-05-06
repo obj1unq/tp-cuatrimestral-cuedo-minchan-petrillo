@@ -33,5 +33,30 @@ describe "testeando la segunda parte"{
 		rolando.encontrarElemento(caterina)
 		assert.that(caterina.getArtefactos().isEmpty())
 		assert.that(rolando.getArtefactos().contains(espadaDelDestino))
+		assert.equals(4, rolando.valorLucha())
+		assert.equals(3, rolando.valorHechiceria())
 	}
+	
+	test "Rolando se encuentra a la Armadura Bendecida " {
+		armadura.setRefuerzo(bendicion)
+		rolando.encontrarElemento(armadura)
+		assert.equals(3, rolando.valorLucha())
+		assert.equals(4, rolando.valorHechiceria())
+	}
+	
+	test "Rolando se encuentra con un viejo sabio " {
+		rolando.encontrarElemento(sabio)
+		assert.equals(2, rolando.valorLucha())
+		assert.equals(4, rolando.valorHechiceria())
+	}
+	
+	test "Rolando se encuentra con un viejo sabio,armadura bendecida, caterina, archivaldo " {
+		rolando.encontrarElemento(sabio)
+		armadura.setRefuerzo(bendicion)
+		rolando.encontrarElemento(armadura)
+		rolando.encontrarElemento(caterina)
+		rolando.encontrarElemento(archivaldo)
+		assert.that(archivaldo.estaMuerto())
+	}
+	
 }

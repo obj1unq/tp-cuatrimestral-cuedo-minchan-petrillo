@@ -108,7 +108,7 @@ object armadura {
 	method valorHechiceria(capo) = refuerzo.valorHechiceria(capo)
 	
 	method encontradoPor(capo){
-		capo.artefactos().add{self}
+		capo.artefactos().add(self)
 	}
 		
 }
