@@ -11,12 +11,8 @@ class Capo {
 	var property bando = null
 	var property estaMuerto = false
 	var imagen = null
-	var posicion = game.origin()
-	
-	method imagen() {
-		return imagen
-	} 
-	
+	var property posicion = game.origin()
+
 	method getArtefactos() = artefactos
 	
 	method valorLuchaBase() = valorBaseLucha
@@ -54,11 +50,14 @@ class Capo {
     method peleaCon(capo){
     	if (self.puntosEnTotal()>=capo.puntosEnTotal()){
     		capo.estaMuerto(true)
+    		capo.regalarArtefactos(self)
     		game.removeVisual(capo)
     	}else{
     		
     		self.estaMuerto(true)
+    		self.regalarArtefactos(capo)
     		game.removeVisual(self)
+
     	}
     }
 	

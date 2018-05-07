@@ -3,8 +3,11 @@ import TP1.*
 	describe "Testeando la primera parte "{
 		var rolando = new Capo()
 		var bandoDelSur = new Bando()
-
-
+		var cofrecito = new Cofrecito()
+		var carbon = new Carbon()
+		var sabio = new Sabio()
+		
+		
 	test "funcionamiento de los requerimientos basicos con artefacto" {
 		
 		rolando.incrementaLucha()

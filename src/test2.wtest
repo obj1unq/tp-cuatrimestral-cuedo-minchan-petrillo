@@ -2,6 +2,7 @@ import TP1.*
 
 describe "testeando la segunda parte"{
 	
+	var sabio = new Sabio()
 	var rolando = new Capo(bando = "sur", valorBaseLucha = 1, valorBaseHechiceria = 3,artefactos=#{})
 	var caterina = new Capo(bando = "sur", valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos=#{espadaDelDestino})
 	var archivaldo = new Capo(bando = "norte", valorBaseLucha = 3, valorBaseHechiceria = 3,artefactos=#{collarDivino,espejoFantastico})
