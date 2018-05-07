@@ -5,11 +5,17 @@
  
 class Capo {
 	
-	var property valorBaseLucha = 3
-	var property valorBaseHechiceria = 1
+	var property valorBaseLucha = 0
+	var property valorBaseHechiceria = 0
 	var property artefactos = #{}
 	var property bando = null
 	var property estaMuerto = false
+	var imagen = null
+	var posicion = game.origin()
+	
+	method imagen() {
+		return imagen
+	} 
 	
 	method getArtefactos() = artefactos
 	
@@ -48,10 +54,11 @@ class Capo {
     method peleaCon(capo){
     	if (self.puntosEnTotal()>=capo.puntosEnTotal()){
     		capo.estaMuerto(true)
-    		
+    		game.removeVisual(capo)
     	}else{
     		
     		self.estaMuerto(true)
+    		game.removeVisual(self)
     	}
     }
 	
@@ -187,7 +194,7 @@ class Bando {
 }
 
 
-object cofrecito {
+class Cofrecito {
 			
 	method encontradoPor(capo){
 		capo.getBando().agregaTesoro(100)
@@ -195,7 +202,7 @@ object cofrecito {
 	
 }
 
-object carbon {
+class Carbon {
 				
 	method encontradoPor(capo){
 		capo.getBando().agregaReserva(50)
@@ -203,9 +210,21 @@ object carbon {
 	
 }
 
-object sabio {
+class Sabio {
 	method encontradoPor(capo){
 		capo.incrementaLucha()
 		capo.incrementaHechiceria()
 	}	
 }	
+
+class Neblina {
+
+	var oculto = []
+	var imagen = "Neblina.png"
+
+	method encontradoPor(capo) {
+		oculto.forEach({ ocultos => capo.encontrarElemento(ocultos)})
+		game.removeVisual(self)
+	}
+
+}
