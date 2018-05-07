@@ -1,0 +1,38 @@
+import TP1.*
+	
+
+program CaposGame {
+
+	
+	var bandoDelSur = new Bando (tesoro = 100, reserva = 50)
+    var bandoDelNorte = new Bando (tesoro = 200, reserva = 200)
+	var rolando = new Capo( bando = bandoDelSur, valorBaseLucha = 1, valorBaseHechiceria = 3, artefactos = #{}, imagen= "Rolando.png",posicion = game.at(9,9))
+	var caterina = new Capo( bando = bandoDelSur, valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos = #{ espadaDelDestino }, posicion = game.at(15,0),imagen= "Caterina.png")
+	var archibaldo = new Capo(bando = bandoDelNorte, valorBaseLucha = 3, valorBaseHechiceria = 3, artefactos = #{ collarDivino, espejoFantastico }, posicion = game.at(5,5), imagen = "Archibaldo.png")
+    var cofre= new Cofrecito()
+    var carbon=new Carbon()
+    var neblina = new Neblina (oculto = [ cofre, carbon, armadura ])
+	var sabio =new Sabio()
+
+
+//	CONFIG	
+	game.title("Batalla de Capos")
+	game.height(10)
+	game.width(10)
+	
+
+//	VISUALES
+	//game.addVisualIn(espadaDelDestino, game.at(12,4))
+	 game.addVisualCharacter(rolando)
+    game.center().drawElement(neblina)
+    game.at(7,7).drawElement(caterina)
+    game.at(6,6).drawElement(archibaldo)	
+	
+//	TECLADO
+
+  game.whenCollideDo(rolando, {objetoEncontrado =>objetoEncontrado.encontradoPor(rolando)})		
+	
+	
+//	START
+	game.start()
+}
