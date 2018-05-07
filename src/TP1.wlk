@@ -72,12 +72,15 @@ class Capo {
 
 object espadaDelDestino {
 	
+	var imagen = "Espada.png"
+	
 	method valorLucha(capo) = 3
 	
 	method valorHechiceria(capo) = 0
 	
 	method encontradoPor(capo){
 		capo.agregarArtefacto(self)
+		game.removeVisual(self)
 	}
 }
 
@@ -106,6 +109,7 @@ object collarDivino {
 class Armadura {
 	
 	var refuerzo = ninguna
+	var imagen = "Armadura.png"
 	
 	method setRefuerzo(ref) { refuerzo = ref }
 	
@@ -115,6 +119,7 @@ class Armadura {
 	
 	method encontradoPor(capo){
 		capo.agregarArtefacto(self)
+		game.removeVisual(self)
 	}
 		
 }
@@ -201,6 +206,7 @@ class Cofrecito {
 	method encontradoPor(capo){
 		capo.getBando().agregaTesoro(valor)
 		game.removeVisual(self)
+		
 	}
 	
 }
@@ -209,6 +215,7 @@ class Carbon {
 				
 	method encontradoPor(capo){
 		capo.getBando().agregaReserva(50)
+		
 	}
 	
 }
@@ -216,10 +223,12 @@ class Carbon {
 class Sabio {
 	
 	var puntoslucha = 1
+	var imagen = "Sabio.png"
 	
 	method encontradoPor(capo){
 		capo.incrementaLucha(puntoslucha) 
 		capo.incrementaHechiceria(cSabio.valor())
+		game.removeVisual(self)
 	}	
 	
 }	
