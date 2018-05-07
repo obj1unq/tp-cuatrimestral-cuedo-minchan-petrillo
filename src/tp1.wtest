@@ -6,6 +6,7 @@ import TP1.*
 		var cofrecito = new Cofrecito()
 		var carbon = new Carbon()
 		var sabio = new Sabio()
+		var armadura = new Armadura()
 		
 		
 	test "funcionamiento de los requerimientos basicos con artefacto" {

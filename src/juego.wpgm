@@ -3,15 +3,16 @@ import TP1.*
 
 program CaposGame {
 
-	
+	var armadura = new Armadura()
 	var bandoDelSur = new Bando (tesoro = 100, reserva = 50)
     var bandoDelNorte = new Bando (tesoro = 200, reserva = 200)
 	var rolando = new Capo( bando = bandoDelSur, valorBaseLucha = 1, valorBaseHechiceria = 3, artefactos = #{}, imagen= "Rolando.png",posicion = game.at(9,9))
 	var caterina = new Capo( bando = bandoDelSur, valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos = #{ espadaDelDestino }, posicion = game.at(0,9),imagen= "Caterina.png")
 	var archibaldo = new Capo(bando = bandoDelNorte, valorBaseLucha = 3, valorBaseHechiceria = 3, artefactos = #{ collarDivino, espejoFantastico }, posicion = game.at(3,5), imagen = "Archibaldo.png")
-    var cofre= new Cofrecito()
+    var cofre1 = new Cofrecito()
+    var cofre2 = new Cofrecito( valor = 80)
     var carbon=new Carbon()
-    var neblina = new Neblina (oculto = [ cofre, carbon, armadura ])
+    var neblina = new Neblina (oculto = [ cofre1, carbon, armadura ])
 	var sabio =new Sabio()
 
 
@@ -27,6 +28,7 @@ program CaposGame {
 	 game.addVisual(archibaldo)
      game.center().drawElement(neblina)
      game.addVisual(caterina)  
+     game.at(4,4).drawElement(cofre2)
  //    
    	
 

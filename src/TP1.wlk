@@ -19,9 +19,9 @@ class Capo {
 	
 	method valorHechiceriaBase() = valorBaseHechiceria
 	
-	method incrementaLucha() { valorBaseLucha += 1 }
+	method incrementaLucha(valor) { valorBaseLucha += valor }
 	
-	method incrementaHechiceria() { valorBaseHechiceria += 1 }
+	method incrementaHechiceria(valor) { valorBaseHechiceria += valor }
 	
 	method valorLucha() = valorBaseLucha + artefactos.sum{ artefacto=> artefacto.valorLucha(self) }
 	
@@ -77,7 +77,7 @@ object espadaDelDestino {
 	method valorHechiceria(capo) = 0
 	
 	method encontradoPor(capo){
-		capo.artefactos().add{self}
+		capo.agregarArtefacto(self)
 	}
 }
 
@@ -88,7 +88,7 @@ object libroDeHechizos {
 	method valorHechiceria(capo) = capo.valorHechiceriaBase()
 	
 	method encontradoPor(capo){
-		capo.artefactos().add{self}
+		capo.agregarArtefacto(self)
 	}
 }
 
@@ -99,11 +99,11 @@ object collarDivino {
 	method valorHechiceria(capo) = 1
 	
 	method encontradoPor(capo){
-		capo.artefactos().add{self}
+		capo.agregarArtefacto(self)
 	}
 }
 
-object armadura {
+class Armadura {
 	
 	var refuerzo = ninguna
 	
@@ -114,7 +114,7 @@ object armadura {
 	method valorHechiceria(capo) = refuerzo.valorHechiceria(capo)
 	
 	method encontradoPor(capo){
-		capo.artefactos().add(self)
+		capo.agregarArtefacto(self)
 	}
 		
 }
@@ -175,7 +175,7 @@ object espejoFantastico{
 	}
 	
 	method encontradoPor(capo){
-		capo.artefactos().add{self}
+		capo.agregarArtefacto(self)
 	}    
 }
 
@@ -194,9 +194,13 @@ class Bando {
 
 
 class Cofrecito {
+	
+	var property valor = 100
+	var imagen = "Cofre.png"
 			
 	method encontradoPor(capo){
-		capo.getBando().agregaTesoro(100)
+		capo.getBando().agregaTesoro(valor)
+		game.removeVisual(self)
 	}
 	
 }
@@ -210,11 +214,21 @@ class Carbon {
 }
 
 class Sabio {
+	
+	var puntoslucha = 1
+	
 	method encontradoPor(capo){
-		capo.incrementaLucha()
-		capo.incrementaHechiceria()
+		capo.incrementaLucha(puntoslucha) 
+		capo.incrementaHechiceria(cSabio.valor())
 	}	
+	
 }	
+
+object cSabio{
+	
+	var property valor = 1
+	
+}
 
 class Neblina {
 
