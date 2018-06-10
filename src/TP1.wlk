@@ -3,6 +3,8 @@
 //CORRECCION:  Mejorar el polimorfismo de elementos.
 //CORRECCION: Los test pueden mejorarse, en particular el testeo sobre el espejo.
  
+ // TODO Siguen estando los tests en rojo?
+ // TOTO Este archivo tiene demasiado código no necesariamente cohesivo y demasiado largo, divídanlo en varios archivos.
 class Capo {
 	
 	var property valorBaseLucha = 0
@@ -14,9 +16,12 @@ class Capo {
 	var property posicion = game.origin()
 
 	method getArtefactos() = artefactos
-	
+
+	// TODO Este método no tiene sentido si ya tenemos una property con el mismo nombre	
 	method valorLuchaBase() = valorBaseLucha
 	
+	// TODO Este método no tiene sentido si ya tenemos una property con el mismo nombre	
+	// Es necesario? ¿Dónde se usa?
 	method valorHechiceriaBase() = valorBaseHechiceria
 	
 	method incrementaLucha(valor) { valorBaseLucha += valor }
@@ -43,12 +48,14 @@ class Capo {
     }
     
     method regalarArtefactos(capo){
+    	// TODO No es correcto manipular la colección de artefactos de otro capo directamente.
     	capo.artefactos().addAll(self.getArtefactos())
     	self.artefactos().clear()
     } 	
     
     method peleaCon(capo){
     	if (self.puntosEnTotal()>=capo.puntosEnTotal()){
+    		// TODO ¿Cómo podría evitar la repetición de código entre las dos ramas del if?
     		capo.estaMuerto(true)
     		capo.regalarArtefactos(self)
     		game.removeVisual(capo)
@@ -157,13 +164,15 @@ object ninguna {
 object espejoFantastico{
 	
 	method mejorArtefacto(capo) {
-
+		// TODO Hay que mejorar la organización espacial del código
+		// Esta línea tan larga dificulta la lectura.
+		// También podría mejorar si usamos más delegación.
         return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
        		
 	 }
     
 	method valorHechiceria(capo){
-	
+		// TODO Por falta de división en subtareas, repite código.
 	   return if( capo.getArtefactos().size()>=1 and !(capo.getArtefactos().contains(self)))
 	   		self.mejorArtefacto(capo).valorHechiceria(capo)
 	   else
@@ -199,7 +208,7 @@ class Bando {
 
 
 class Cofrecito {
-	
+	// TODO ¿Por qué "var property"? 	
 	var property valor = 100
 	var imagen = "Cofre.png"
 			
@@ -220,6 +229,7 @@ class Carbon {
 	
 }
 
+// TODO ¿Por qué usamos clases siempre? ¿Es necesario?
 class Sabio {
 	
 	var puntoslucha = 1
@@ -233,6 +243,7 @@ class Sabio {
 	
 }	
 
+// TODO ¿Qué es este objeto?
 object cSabio{
 	
 	var property valor = 1

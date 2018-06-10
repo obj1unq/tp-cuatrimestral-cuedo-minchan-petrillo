@@ -3,7 +3,7 @@ import TP1.*
 
 program CaposGame {
 
-	
+	// TODO Eliminen las variables que no se usan
 	var armadura1 = new Armadura(refuerzo = bendicion)
 	var armadura2 = new Armadura(refuerzo = cotaDeMalla)
 	var bandoDelSur = new Bando (tesoro = 100, reserva = 50)
@@ -25,10 +25,12 @@ program CaposGame {
 	
 
 //	VISUALES
+// TODO Este código va o no va? Si no va, bórrenlo, no dejen código comentado.
 	//game.addVisualIn(espadaDelDestino, game.at(12,4))
 	 game.addVisualCharacter(rolando)
 	 game.addVisual(archibaldo)
      game.center().drawElement(neblina)
+     // TODO Revisar: jugando me pasó que cuando colisiona rolando con caterina no pasa nada, ¿puede ser?
      game.addVisual(caterina)  
      game.at(4,4).drawElement(cofre2)
      game.at(7,3).drawElement(armadura2)
