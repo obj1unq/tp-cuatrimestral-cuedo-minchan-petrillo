@@ -1,4 +1,7 @@
-import TP1.*
+import capo.*
+import elementos.*
+import artefactos.*
+import armaduras.*
 	
 
 program CaposGame {

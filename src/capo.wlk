@@ -1,3 +1,6 @@
+import elementos.*
+import artefactos.*
+
 //CORRECCION: Nota Primer entrega: Bien+. Siempre entregar con los test en verde! (auque por la manera del test que falla podría pasar 
 //CORRECCION: que en ciertas combinacion de versiones de wollok/JVM de verde y en otras aosmarillo).
 //CORRECCION:  Mejorar el polimorfismo de elementos.
@@ -17,13 +20,6 @@ class Capo {
 
 	method getArtefactos() = artefactos
 
-	// TODO Este método no tiene sentido si ya tenemos una property con el mismo nombre	
-//	method valorLuchaBase() = valorBaseLucha
-	
-	// TODO Este método no tiene sentido si ya tenemos una property con el mismo nombre	
-	// Es necesario? ¿Dónde se usa?
-//	method valorHechiceriaBase() = valorBaseHechiceria
-	
 	method incrementaLucha(valor) { valorBaseLucha += valor }
 	
 	method incrementaHechiceria(valor) { valorBaseHechiceria += valor }
@@ -53,7 +49,6 @@ class Capo {
     }
     
     method regalarArtefactos(capo){
-    	// TODO No es correcto manipular la colección de artefactos de otro capo directamente.
 
 		self.artefactos().forEach({artefacto => self.regalarArtefacto(capo, artefacto)})
     } 	
@@ -61,7 +56,6 @@ class Capo {
     method peleaCon(capo){
     	
     	if (self.puntosEnTotal() >= capo.puntosEnTotal()){
-    		// TODO ¿Cómo podría evitar la repetición de código entre las dos ramas del if?
 
 			capo.fallecer()
 			
@@ -100,8 +94,8 @@ class Bando {
 
 
 class Cofrecito {
-	// TODO ¿Por qué "var property"? 	
-	var property valor = 100
+		
+	var  valor = 100
 	var imagen = "Cofre.png"
 			
 	method encontradoPor(capo){
