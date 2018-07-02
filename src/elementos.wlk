@@ -8,14 +8,14 @@ class Sabio {
 	
 	method encontradoPor(capo){
 		capo.incrementaLucha(puntoslucha) 
-		capo.incrementaHechiceria(cSabio.valor())
+		capo.incrementaHechiceria(ayudanteDeSabio.valor())
 		game.removeVisual(self)
 	}	
 	
 }	
 
 // TODO ¿Qué es este objeto?
-object cSabio{
+object ayudanteDeSabio{
 	
 	var property valor = 1
 	

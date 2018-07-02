@@ -38,29 +38,34 @@ object collarDivino {
 
 object espejoFantastico{
 	
-	method mejorArtefacto(capo) {
-		// TODO Hay que mejorar la organización espacial del código
-		// Esta línea tan larga dificulta la lectura.
-		// También podría mejorar si usamos más delegación.
-        return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
-       		
-	 }
+//	method mejorArtefacto(capo) {
+//		// TODO Hay que mejorar la organización espacial del código
+//		// Esta línea tan larga dificulta la lectura.
+//		// También podría mejorar si usamos más delegación.
+//        return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
+//       		
+//	 }
+
+	method artefactosMenosYo(capo){
+		var artefactos = capo.getArtefactos()
+		
+		artefactos.remove(self)
+		return artefactos
+	}
     
 	method valorHechiceria(capo){
-		// TODO Por falta de división en subtareas, repite código.
-	   return if( capo.getArtefactos().size()>=1 and !(capo.getArtefactos().contains(self)))
-	   		self.mejorArtefacto(capo).valorHechiceria(capo)
-	   else
-	   		0
-	  	 
-	 }
+		var artefactos = self.artefactosMenosYo(capo)
+		
+		return if (!artefactos.isEmpty())	
+			capo.mejorArtefacto(artefactos).puntosDeHechiceria(capo) else 0
+	}
+	
 	   
 	method valorLucha(capo){
-	
-	  return if( capo.getArtefactos().size()>=1 and !(capo.getArtefactos().contains(self)))
-	  			self.mejorArtefacto(capo).valorLucha(capo)	 
-	   		else
-	   			0
+		var artefactos = self.artefactosMenosYo(capo)
+		
+		return if (!artefactos.isEmpty())	
+			capo.mejorArtefacto(artefactos).puntosDeLucha(capo) else 0
 	}
 	
 	method encontradoPor(capo){

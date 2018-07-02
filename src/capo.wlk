@@ -43,6 +43,12 @@ class Capo {
     	}
     }
     
+    	method mejorArtefacto(_artefactos) {
+		
+        return _artefactos.max({ artefacto => artefacto.valorHechiceria(self) + artefacto.valorLucha(self)})
+       		
+	 }
+    
     method regalarArtefacto(unArtefacto,unCapo){
     	unCapo.agregarArtefacto(unArtefacto)
 		self.artefactos().remove(unArtefacto)

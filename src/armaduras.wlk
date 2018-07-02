@@ -36,7 +36,7 @@ object bendicion {
 object hechizo {
 	
 	method valorLucha(capo) = 0
-	method valorHechiceria(capo) = if (capo.valorHechiceriaBase() > 3) 2  else 0
+	method valorHechiceria(capo) = if (capo.valorBaseHechiceria() > 3) 2  else 0
 	
 }
 
