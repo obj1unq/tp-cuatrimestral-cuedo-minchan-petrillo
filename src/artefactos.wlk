@@ -1,4 +1,3 @@
-
 object espadaDelDestino {
 	
 	var imagen = "Espada.png"

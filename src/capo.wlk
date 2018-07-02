@@ -1,6 +1,7 @@
 import elementos.*
 import artefactos.*
 
+
 //CORRECCION: Nota Primer entrega: Bien+. Siempre entregar con los test en verde! (auque por la manera del test que falla podría pasar 
 //CORRECCION: que en ciertas combinacion de versiones de wollok/JVM de verde y en otras aosmarillo).
 //CORRECCION:  Mejorar el polimorfismo de elementos.

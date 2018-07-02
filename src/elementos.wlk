@@ -1,5 +1,3 @@
-
-
 // TODO ¿Por qué usamos clases siempre? ¿Es necesario?
 class Sabio {
 	

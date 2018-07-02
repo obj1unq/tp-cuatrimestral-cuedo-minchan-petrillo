@@ -3,6 +3,7 @@ import capo.*
 import elementos.*
 import artefactos.*
 
+
 describe "testeando la segunda parte"{
 	
 	var sabio = new Sabio()

@@ -1,5 +1,6 @@
 import capo.*
 
+
 class Armadura {
 	
 	var refuerzo = ninguna
