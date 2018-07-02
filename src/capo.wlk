@@ -56,7 +56,7 @@ class Capo {
     
     method regalarArtefactos(capo){
 
-		self.artefactos().forEach({artefacto => self.regalarArtefacto(capo, artefacto)})
+		self.artefactos().forEach({artefacto => self.regalarArtefacto(artefacto, capo)})
     } 	
     
     method peleaCon(capo){

@@ -1,4 +1,7 @@
-import TP1.*
+import armaduras.*
+import capo.*
+import elementos.*
+import artefactos.*
 
 describe "testeando la segunda parte"{
 	
@@ -14,7 +17,7 @@ describe "testeando la segunda parte"{
 		
 		assert.equals(#{collarDivino,espejoFantastico}, archivaldo.getArtefactos())
 		assert.equals(#{espadaDelDestino}, caterina.getArtefactos())
-		rolando.incrementaLucha()
+		rolando.incrementaLucha(1)
 		assert.equals(2,rolando.valorLucha())
 	}
 

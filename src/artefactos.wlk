@@ -17,7 +17,7 @@ object libroDeHechizos {
 	
 	method valorLucha(capo) = 0
 	
-	method valorHechiceria(capo) = capo.valorHechiceriaBase()
+	method valorHechiceria(capo) = capo.valorBaseHechiceria()
 	
 	method encontradoPor(capo){
 		capo.agregarArtefacto(self)
@@ -38,13 +38,13 @@ object collarDivino {
 
 object espejoFantastico{
 	
-//	method mejorArtefacto(capo) {
-//		// TODO Hay que mejorar la organización espacial del código
-//		// Esta línea tan larga dificulta la lectura.
-//		// También podría mejorar si usamos más delegación.
-//        return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
-//       		
-//	 }
+	method mejorArtefacto(capo) {
+	//TODO Hay que mejorar la organización espacial del código
+		// Esta línea tan larga dificulta la lectura.
+	// También podría mejorar si usamos más delegación.
+      return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo) + artefacto.valorLucha(capo)})
+       		
+	 }
 
 	method artefactosMenosYo(capo){
 		var artefactos = capo.getArtefactos()
@@ -57,7 +57,7 @@ object espejoFantastico{
 		var artefactos = self.artefactosMenosYo(capo)
 		
 		return if (!artefactos.isEmpty())	
-			capo.mejorArtefacto(artefactos).puntosDeHechiceria(capo) else 0
+			capo.mejorArtefacto(artefactos).valorHechiceria(capo) else 0
 	}
 	
 	   
@@ -65,7 +65,7 @@ object espejoFantastico{
 		var artefactos = self.artefactosMenosYo(capo)
 		
 		return if (!artefactos.isEmpty())	
-			capo.mejorArtefacto(artefactos).puntosDeLucha(capo) else 0
+			capo.mejorArtefacto(artefactos).valorLucha(capo) else 0
 	}
 	
 	method encontradoPor(capo){

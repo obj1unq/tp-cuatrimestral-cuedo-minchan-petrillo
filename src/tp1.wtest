@@ -1,4 +1,7 @@
-import TP1.*
+import armaduras.*
+import capo.*
+import elementos.*
+import artefactos.*
 
 	describe "Testeando la primera parte "{
 		var rolando = new Capo()
@@ -7,15 +10,17 @@ import TP1.*
 		var carbon = new Carbon()
 		var sabio = new Sabio()
 		var armadura = new Armadura()
+
 		
 		
 	test "funcionamiento de los requerimientos basicos con artefacto" {
 		
-		rolando.incrementaLucha()
-		rolando.incrementaHechiceria()
+		rolando.incrementaLucha(1)
+		rolando.incrementaHechiceria(1)
 		rolando.agregarArtefacto(espadaDelDestino)
-		assert.equals(7, rolando.valorLucha())
-		assert.equals(2, rolando.valorHechiceria())
+		assert.equals(4, rolando.valorLucha())
+		assert.equals(1, rolando.valorHechiceria()) 
+
 	}
 
 	test "rolando obtiene muchos artefactos"{
@@ -23,8 +28,8 @@ import TP1.*
 		rolando.agregarArtefacto(espadaDelDestino)
 		rolando.agregarArtefacto(collarDivino)
 		rolando.agregarArtefacto(libroDeHechizos)
-		assert.equals(7, rolando.valorLucha())
-		assert.equals(3, rolando.valorHechiceria())
+		assert.equals(4, rolando.valorLucha())
+		assert.equals(1, rolando.valorHechiceria())
 	}
 	
 	test "agregando armadura con refuerzo"{
@@ -33,16 +38,16 @@ import TP1.*
 		rolando.agregarArtefacto(collarDivino)
 		rolando.agregarArtefacto(armadura)
 		armadura.setRefuerzo(cotaDeMalla)
-		assert.equals(10, rolando.valorLucha())
-		assert.equals(2, rolando.valorHechiceria())
+		assert.equals(7, rolando.valorLucha())
+		assert.equals(1, rolando.valorHechiceria())
 	}
 	
 	test "rolando solo tiene un espejo fantastico en sus artefactos"{
 		
 		rolando.agregarArtefacto(espejoFantastico)
 		
-		assert.equals(3, rolando.valorLucha())
-		assert.equals(1, rolando.valorHechiceria())
+		assert.equals(0, rolando.valorLucha())
+		assert.equals(0, rolando.valorHechiceria())
 	}
 	
 	 test "rolando solo tiene un espejo, valor de lucha y hechiceria"{
@@ -72,13 +77,21 @@ import TP1.*
 	//CORRECCION: o si no uno en el cual el espejo conteste los valores de lucar y hechicería que aporta, para asegurarse 
 	//CORRECCION: de que es un artefacto polimórfico con los demás y anda	
 	
+	test "rolando se encuentra un espejo magico"{
+		rolando.agregarArtefacto(collarDivino)
+		rolando.agregarArtefacto(espejoFantastico)
+		assert.equals(2 ,rolando.valorLucha())
+		assert.equals(2 ,rolando.valorHechiceria())
+	}
+	
+	
 	test "rolando se encuentra un cofrecito y su oro aumenta a 100" {
 		rolando.bando(bandoDelSur)
 		rolando.encontrarElemento(cofrecito)
 		assert.equals(100, bandoDelSur.getTesoro())
 		assert.equals(0, bandoDelSur.getReserva())
-		assert.equals(3, rolando.valorLuchaBase())
-		assert.equals(1, rolando.valorHechiceriaBase())
+		assert.equals(0, rolando.valorBaseLucha())
+		assert.equals(0, rolando.valorBaseHechiceria())
 	}
 	
 	test "rolando se encuentra un cofrecito y su reserva aumenta a 50" {
@@ -86,8 +99,8 @@ import TP1.*
 		rolando.encontrarElemento(carbon)
 		assert.equals(0, bandoDelSur.getTesoro())
 		assert.equals(50, bandoDelSur.getReserva())
-		assert.equals(3, rolando.valorLuchaBase())
-		assert.equals(1, rolando.valorHechiceriaBase()
+		assert.equals(0, rolando.valorBaseLucha())
+		assert.equals(0, rolando.valorBaseHechiceria()
 		)
 	}
 	
@@ -95,8 +108,8 @@ import TP1.*
 	rolando.encontrarElemento(sabio)
 		assert.equals(0, bandoDelSur.getTesoro())
 		assert.equals(0, bandoDelSur.getReserva())
-		assert.equals(4, rolando.valorLuchaBase())
-		assert.equals(2, rolando.valorHechiceriaBase())
+		assert.equals(1, rolando.valorBaseLucha())
+		assert.equals(1, rolando.valorBaseHechiceria())
 	}
 
 }	

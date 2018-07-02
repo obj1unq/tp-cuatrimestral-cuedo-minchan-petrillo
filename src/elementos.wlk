@@ -3,23 +3,18 @@
 // TODO ¿Por qué usamos clases siempre? ¿Es necesario?
 class Sabio {
 	
+	var property puntosHechiceria = 1
 	var puntoslucha = 1
 	var imagen = "Sabio.png"
 	
 	method encontradoPor(capo){
 		capo.incrementaLucha(puntoslucha) 
-		capo.incrementaHechiceria(ayudanteDeSabio.valor())
+		capo.incrementaHechiceria(puntosHechiceria)
 		game.removeVisual(self)
 	}	
 	
 }	
 
-// TODO ¿Qué es este objeto?
-object ayudanteDeSabio{
-	
-	var property valor = 1
-	
-}
 
 class Neblina {
 
