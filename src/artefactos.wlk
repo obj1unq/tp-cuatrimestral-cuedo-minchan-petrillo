@@ -37,13 +37,6 @@ object collarDivino {
 
 object espejoFantastico{
 	
-	method mejorArtefacto(capo) {
-	//TODO Hay que mejorar la organización espacial del código
-		// Esta línea tan larga dificulta la lectura.
-	// También podría mejorar si usamos más delegación.
-      return capo.getArtefactos().max({artefacto=>artefacto.valorHechiceria(capo) + artefacto.valorLucha(capo)})
-       		
-	 }
 
 	method artefactosMenosYo(capo){
 		var artefactos = capo.getArtefactos()
