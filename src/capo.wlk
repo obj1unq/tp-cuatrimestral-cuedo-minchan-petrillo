@@ -2,13 +2,7 @@ import elementos.*
 import artefactos.*
 
 
-//CORRECCION: Nota Primer entrega: Bien+. Siempre entregar con los test en verde! (auque por la manera del test que falla podría pasar 
-//CORRECCION: que en ciertas combinacion de versiones de wollok/JVM de verde y en otras aosmarillo).
-//CORRECCION:  Mejorar el polimorfismo de elementos.
-//CORRECCION: Los test pueden mejorarse, en particular el testeo sobre el espejo.
- 
- // TODO Siguen estando los tests en rojo?
- // TOTO Este archivo tiene demasiado código no necesariamente cohesivo y demasiado largo, divídanlo en varios archivos.
+
 class Capo {
 	
 	var property valorBaseLucha = 0

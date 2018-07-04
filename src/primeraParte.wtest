@@ -85,6 +85,12 @@ import artefactos.*
 		assert.equals(1 ,rolando.valorHechiceria())
 	}
 	
+	test "Si rolando agrega espejo fantastico, y este no aplica ningún puntos"{
+    	rolando.agregarArtefacto(espejoFantastico)
+     	assert.equals(0, rolando.valorLucha())
+        assert.equals(0, rolando.valorHechiceria())
+    }
+  
 	
 	test "rolando se encuentra un cofrecito y su oro aumenta a 100" {
 		rolando.bando(bandoDelSur)

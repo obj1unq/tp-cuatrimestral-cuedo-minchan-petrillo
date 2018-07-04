@@ -1,4 +1,4 @@
-// TODO ¿Por qué usamos clases siempre? ¿Es necesario?
+
 class Sabio {
 	
 	var property puntosHechiceria = 1
