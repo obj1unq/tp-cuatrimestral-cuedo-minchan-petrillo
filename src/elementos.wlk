@@ -1,4 +1,3 @@
-
 class Sabio {
 	
 	var property puntosHechiceria = 1

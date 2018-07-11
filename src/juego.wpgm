@@ -5,19 +5,19 @@ import armaduras.*
 
 program CaposGame {
 
-	// TODO Eliminen las variables que no se usan
+	// TODO Eliminen las variables que no se usan = RTA: Todas las variables son utilizadas, algunas se utilizan dentro de las otras variables
 	var armadura1 = new Armadura(refuerzo = bendicion)
 	var armadura2 = new Armadura(refuerzo = cotaDeMalla)
 	var bandoDelSur = new Bando (tesoro = 100, reserva = 50)
     var bandoDelNorte = new Bando (tesoro = 200, reserva = 200)
 	var rolando = new Capo( bando = bandoDelSur, valorBaseLucha = 1, valorBaseHechiceria = 3, artefactos = #{}, imagen= "Rolando.png",posicion = game.at(9,9))
-	var caterina = new Capo( bando = bandoDelSur, valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos = #{ espadaDelDestino }, posicion = game.at(0,9),imagen= "Caterina.png")
+	var caterina = new Capo( bando = bandoDelSur, valorBaseLucha = 2, valorBaseHechiceria = 1, artefactos = #{espadaDelDestino},imagen= "Caterina.png", posicion = game.at(0,8))
 	var archibaldo = new Capo(bando = bandoDelNorte, valorBaseLucha = 3, valorBaseHechiceria = 3, artefactos = #{ collarDivino, espejoFantastico }, posicion = game.at(3,5), imagen = "Archibaldo.png")
     var cofre1 = new Cofrecito()
     var cofre2 = new Cofrecito( valor = 80)
-    var carbon=new Carbon()
+    var carbon= new Carbon()
     var neblina = new Neblina (oculto = [ cofre1, carbon, armadura1 ])
-	var sabio =new Sabio()
+	var sabio = new Sabio()
 
 
 //	CONFIG	
@@ -27,13 +27,12 @@ program CaposGame {
 	
 
 //	VISUALES
-// TODO Este código va o no va? Si no va, bórrenlo, no dejen código comentado.
-	//game.addVisualIn(espadaDelDestino, game.at(12,4))
+
+     // TODO Revisar: jugando me pasó que cuando colisiona rolando con caterina no pasa nada, ¿puede ser? = RTA: Ya que Caterina y Rolando son del mismo bando, lo que hace es regalarle sus artefactos a Rolando.
 	 game.addVisualCharacter(rolando)
 	 game.addVisual(archibaldo)
+     game.addVisual(caterina)	 
      game.center().drawElement(neblina)
-     // TODO Revisar: jugando me pasó que cuando colisiona rolando con caterina no pasa nada, ¿puede ser?
-     game.addVisual(caterina)  
      game.at(4,4).drawElement(cofre2)
      game.at(7,3).drawElement(armadura2)
      game.at(1,4).drawElement(sabio)
